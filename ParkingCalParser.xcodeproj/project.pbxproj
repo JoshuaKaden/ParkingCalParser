@@ -14,6 +14,11 @@
 		771154DA1DE4B0A90020877E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771154D81DE4B0A90020877E /* LaunchScreen.storyboard */; };
 		771154E51DE4B0A90020877E /* ParkingCalParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771154E41DE4B0A90020877E /* ParkingCalParserTests.swift */; };
 		771154F01DE4B0A90020877E /* ParkingCalParserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771154EF1DE4B0A90020877E /* ParkingCalParserUITests.swift */; };
+		771154FF1DE4B5FB0020877E /* ParseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771154FE1DE4B5FB0020877E /* ParseViewController.swift */; };
+		771155011DE4B7350020877E /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155001DE4B7350020877E /* UIView+Layout.swift */; };
+		771155031DE4F8170020877E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155021DE4F8170020877E /* Result.swift */; };
+		771155051DE4F8420020877E /* ParkingCalendarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155041DE4F8420020877E /* ParkingCalendarParser.swift */; };
+		771155071DE4F8BC0020877E /* ParseResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155061DE4F8BC0020877E /* ParseResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		771154EB1DE4B0A90020877E /* ParkingCalParserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkingCalParserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		771154EF1DE4B0A90020877E /* ParkingCalParserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCalParserUITests.swift; sourceTree = "<group>"; };
 		771154F11DE4B0A90020877E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		771154FE1DE4B5FB0020877E /* ParseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseViewController.swift; sourceTree = "<group>"; };
+		771155001DE4B7350020877E /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		771155021DE4F8170020877E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		771155041DE4F8420020877E /* ParkingCalendarParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingCalendarParser.swift; sourceTree = "<group>"; };
+		771155061DE4F8BC0020877E /* ParseResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 		771154CE1DE4B0A90020877E /* ParkingCalParser */ = {
 			isa = PBXGroup;
 			children = (
+				771154FD1DE4B5DB0020877E /* Classes */,
 				771154CF1DE4B0A90020877E /* AppDelegate.swift */,
 				771154D11DE4B0A90020877E /* ViewController.swift */,
 				771154D31DE4B0A90020877E /* Main.storyboard */,
@@ -123,6 +134,18 @@
 				771154F11DE4B0A90020877E /* Info.plist */,
 			);
 			path = ParkingCalParserUITests;
+			sourceTree = "<group>";
+		};
+		771154FD1DE4B5DB0020877E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				771155041DE4F8420020877E /* ParkingCalendarParser.swift */,
+				771155061DE4F8BC0020877E /* ParseResults.swift */,
+				771154FE1DE4B5FB0020877E /* ParseViewController.swift */,
+				771155021DE4F8170020877E /* Result.swift */,
+				771155001DE4B7350020877E /* UIView+Layout.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771155011DE4B7350020877E /* UIView+Layout.swift in Sources */,
+				771155051DE4F8420020877E /* ParkingCalendarParser.swift in Sources */,
+				771155031DE4F8170020877E /* Result.swift in Sources */,
 				771154D21DE4B0A90020877E /* ViewController.swift in Sources */,
+				771154FF1DE4B5FB0020877E /* ParseViewController.swift in Sources */,
+				771155071DE4F8BC0020877E /* ParseResults.swift in Sources */,
 				771154D01DE4B0A90020877E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

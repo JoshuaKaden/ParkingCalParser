@@ -19,6 +19,7 @@
 		771155031DE4F8170020877E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155021DE4F8170020877E /* Result.swift */; };
 		771155051DE4F8420020877E /* ParkingCalendarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155041DE4F8420020877E /* ParkingCalendarParser.swift */; };
 		771155071DE4F8BC0020877E /* ParseResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155061DE4F8BC0020877E /* ParseResults.swift */; };
+		7773F71F1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773F71E1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		771155021DE4F8170020877E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		771155041DE4F8420020877E /* ParkingCalendarParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingCalendarParser.swift; sourceTree = "<group>"; };
 		771155061DE4F8BC0020877E /* ParseResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseResults.swift; sourceTree = "<group>"; };
+		7773F71E1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingCalendarEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		771154FD1DE4B5DB0020877E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7773F71E1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift */,
 				771155041DE4F8420020877E /* ParkingCalendarParser.swift */,
 				771155061DE4F8BC0020877E /* ParseResults.swift */,
 				771154FE1DE4B5FB0020877E /* ParseViewController.swift */,
@@ -290,6 +293,7 @@
 				771155031DE4F8170020877E /* Result.swift in Sources */,
 				771154D21DE4B0A90020877E /* ViewController.swift in Sources */,
 				771154FF1DE4B5FB0020877E /* ParseViewController.swift in Sources */,
+				7773F71F1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift in Sources */,
 				771155071DE4F8BC0020877E /* ParseResults.swift in Sources */,
 				771154D01DE4B0A90020877E /* AppDelegate.swift in Sources */,
 			);
@@ -542,6 +546,7 @@
 				771154F61DE4B0A90020877E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		771154F71DE4B0A90020877E /* Build configuration list for PBXNativeTarget "ParkingCalParserTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +555,7 @@
 				771154F91DE4B0A90020877E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		771154FA1DE4B0A90020877E /* Build configuration list for PBXNativeTarget "ParkingCalParserUITests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +564,7 @@
 				771154FC1DE4B0A90020877E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

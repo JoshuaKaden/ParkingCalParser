@@ -9,5 +9,7 @@
 import Foundation
 
 struct ParseResults {
-    
+    let sourceLines: [String]
+    let eventDictionaries: [[String : String]]
+    let events: [ParkingCalendarEvent]
 }

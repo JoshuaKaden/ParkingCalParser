@@ -12,6 +12,8 @@ final class ParseViewController: UIViewController {
 
     private var isParsing = false
     private let parseButton = UIButton()
+    private var parseResults: ParseResults?
+    private let resultsButton = UIButton()
     private let resultsLabel = UILabel()
     private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     private let urlContainerView = UIView()
@@ -45,6 +47,12 @@ final class ParseViewController: UIViewController {
         resultsLabel.lineBreakMode = .byWordWrapping
         resultsLabel.numberOfLines = 0
         view.addSubview(resultsLabel)
+        
+        resultsButton.addTarget(self, action: #selector(didTapResultsButton(_:)), for: .touchUpInside)
+        resultsButton.isHidden = true
+        resultsButton.setTitle(NSLocalizedString("View Results", comment: ""), for: .normal)
+        resultsButton.setTitleColor(UIColor.blue, for: .normal)
+        view.addSubview(resultsButton)
     }
 
     func didTapParseButton(_ sender: UIButton) {
@@ -52,8 +60,10 @@ final class ParseViewController: UIViewController {
         guard let urlString = urlTextField.text, let url = URL(string: urlString) else { return }
         
         isParsing = true
+        parseResults = nil
         
         parseButton.isHidden = true
+        resultsButton.isHidden = true
         resultsLabel.isHidden = true
         spinner.startAnimating()
         
@@ -73,15 +83,20 @@ final class ParseViewController: UIViewController {
             self?.isParsing = false
             self?.spinner.stopAnimating()
             self?.parseButton.isHidden = false
+            if let _ = self?.parseResults { self?.resultsButton.isHidden = false }
             self?.resultsLabel.isHidden = false
             self?.view.setNeedsLayout()
         }
     }
     
+    func didTapResultsButton(_ sender: UIButton) {
+        guard let parseResults = parseResults else { return }
+        let vc = ParseResultsViewController(results: parseResults)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func handle(results: ParseResults) {
-        results.events.sorted(by: { $0.date < $1.date })
-            .forEach { print($0) }
-        print(results.asJSON())
+        parseResults = results
     }
     
     override func viewDidLayoutSubviews() {
@@ -114,6 +129,10 @@ final class ParseViewController: UIViewController {
         resultsLabel.sizeToFit()
         resultsLabel.centerHorizontallyInSuperview()
         resultsLabel.y = parseButton.maxY + padding
+        
+        resultsButton.backgroundColor = UIColor.lightGray
+        resultsButton.size = CGSize(width: view.width, height: baseHeight)
+        resultsButton.y = resultsLabel.maxY + padding
     }
     
 }

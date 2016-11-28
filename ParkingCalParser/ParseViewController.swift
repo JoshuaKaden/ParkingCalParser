@@ -66,7 +66,7 @@ final class ParseViewController: UIViewController {
         resultsButton.isHidden = true
         resultsLabel.isHidden = true
         spinner.startAnimating()
-        
+        				
         let parser = ParkingCalendarParser(url: url)
         parser.parse() {
             [weak self] result in

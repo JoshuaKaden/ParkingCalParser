@@ -14,6 +14,7 @@ final class ParseResultsViewController: UIViewController {
     let containerView = UIView()
     let results: ParseResults
     let tableView = UITableView()
+    let textView = UITextView()
     
     init(results: ParseResults) {
         self.results = results
@@ -37,10 +38,23 @@ final class ParseResultsViewController: UIViewController {
         
         tableView.dataSource = self
         containerView.addSubview(tableView)
+        
+        textView.isHidden = true
+        containerView.addSubview(textView)
     }
 
     func chooserDidChange(_ sender: UISegmentedControl) {
-        
+        if sender.selectedSegmentIndex == 0 {
+            tableView.isHidden = false
+            textView.isHidden = true
+            tableView.reloadData()
+        } else {
+            tableView.isHidden = true
+            textView.isHidden = false
+            textView.text = results.asJSON()
+            
+            print(textView.text)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,6 +68,7 @@ final class ParseResultsViewController: UIViewController {
         containerView.height = view.height - containerView.y
         
         tableView.frame = containerView.bounds
+        textView.frame = containerView.bounds
     }
 }
 

@@ -12,4 +12,12 @@ struct ParseResults {
     let sourceLines: [String]
     let eventDictionaries: [[String : String]]
     let events: [ParkingCalendarEvent]
+    
+    func asJSON() -> String {
+        let eventsString = events
+            .sorted(by: { $0.date < $1.date })
+            .map { $0.asJSON() }
+            .joined(separator: ",")
+        return "{\"VCALENDAR\": {\"VEVENT\": [\(eventsString)]}}"
+    }
 }

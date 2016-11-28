@@ -81,6 +81,7 @@ final class ParseViewController: UIViewController {
     private func handle(results: ParseResults) {
         results.events.sorted(by: { $0.date < $1.date })
             .forEach { print($0) }
+        print(results.asJSON())
     }
     
     override func viewDidLayoutSubviews() {

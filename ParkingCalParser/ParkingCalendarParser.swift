@@ -30,7 +30,9 @@ final class ParkingCalendarParser {
         
         let lineDictionaries = parse(lines: lines)
         let eventDictionaries = exciseIrrelevantKeys(dictionaries: lineDictionaries)
-        let events = eventDictionaries.map { ParkingCalendarEvent(dictionary: $0) }
+        let events = eventDictionaries
+            .map { ParkingCalendarEvent(dictionary: $0) }
+            .sorted(by: { $0.date < $1.date })
         
         let results = ParseResults(sourceLines: lines, eventDictionaries: eventDictionaries, events: events)
         completion(.success(results))

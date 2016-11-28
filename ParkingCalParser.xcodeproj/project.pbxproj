@@ -20,6 +20,7 @@
 		771155051DE4F8420020877E /* ParkingCalendarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155041DE4F8420020877E /* ParkingCalendarParser.swift */; };
 		771155071DE4F8BC0020877E /* ParseResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771155061DE4F8BC0020877E /* ParseResults.swift */; };
 		7773F71F1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773F71E1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift */; };
+		93D783A81DEC96FD00BF2186 /* ParseResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D783A71DEC96FD00BF2186 /* ParseResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		771155041DE4F8420020877E /* ParkingCalendarParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingCalendarParser.swift; sourceTree = "<group>"; };
 		771155061DE4F8BC0020877E /* ParseResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseResults.swift; sourceTree = "<group>"; };
 		7773F71E1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingCalendarEvent.swift; sourceTree = "<group>"; };
+		93D783A71DEC96FD00BF2186 /* ParseResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				7773F71E1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift */,
 				771155041DE4F8420020877E /* ParkingCalendarParser.swift */,
 				771155061DE4F8BC0020877E /* ParseResults.swift */,
+				93D783A71DEC96FD00BF2186 /* ParseResultsViewController.swift */,
 				771154FE1DE4B5FB0020877E /* ParseViewController.swift */,
 				771155021DE4F8170020877E /* Result.swift */,
 				771155001DE4B7350020877E /* UIView+Layout.swift */,
@@ -296,6 +299,7 @@
 				7773F71F1DE62D3D00FF6A63 /* ParkingCalendarEvent.swift in Sources */,
 				771155071DE4F8BC0020877E /* ParseResults.swift in Sources */,
 				771154D01DE4B0A90020877E /* AppDelegate.swift in Sources */,
+				93D783A81DEC96FD00BF2186 /* ParseResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

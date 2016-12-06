@@ -17,11 +17,6 @@ final class ParseResultsViewController: UIViewController {
     }()
     private let chooser = UISegmentedControl(items: ["Table", "JSON"])
     private let containerView = UIView()
-    fileprivate lazy var monthFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM"
-        return formatter
-    }()
     fileprivate lazy var monthlyEvents: [[ParkingCalendarEvent]] = { return self.results.splitByMonth() }()
     private let results: ParseResults
     private let tableView = UITableView()
@@ -130,6 +125,6 @@ extension ParseResultsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return monthFormatter.standaloneMonthSymbols[section]
+        return dayFormatter.standaloneMonthSymbols[section]
     }
 }

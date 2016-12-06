@@ -10,11 +10,22 @@ import UIKit
 
 final class ParseResultsViewController: UIViewController {
 
-    let chooser = UISegmentedControl(items: ["Table", "JSON"])
-    let containerView = UIView()
-    let results: ParseResults
-    let tableView = UITableView()
-    let textView = UITextView()
+    fileprivate lazy var dayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E MMM d"
+        return formatter
+    }()
+    private let chooser = UISegmentedControl(items: ["Table", "JSON"])
+    private let containerView = UIView()
+    fileprivate lazy var monthFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM"
+        return formatter
+    }()
+    fileprivate lazy var monthlyEvents: [[ParkingCalendarEvent]] = { return self.results.splitByMonth() }()
+    private let results: ParseResults
+    private let tableView = UITableView()
+    private let textView = UITextView()
     
     init(results: ParseResults) {
         self.results = results
@@ -37,6 +48,7 @@ final class ParseResultsViewController: UIViewController {
         view.addSubview(containerView)
         
         tableView.dataSource = self
+        tableView.rowHeight = 80
         containerView.addSubview(tableView)
         
         textView.isHidden = true
@@ -70,6 +82,20 @@ final class ParseResultsViewController: UIViewController {
         tableView.frame = containerView.bounds
         textView.frame = containerView.bounds
     }
+    
+    fileprivate func buildSummaryCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell: SummaryCell
+        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: "ParseResultsSummaryCell") as? SummaryCell {
+            cell = dequeuedCell
+        } else {
+            cell = SummaryCell(style: .default, reuseIdentifier: "ParseResultsSummaryCell")
+        }
+        
+        let event = monthlyEvents[indexPath.section][indexPath.row / 2]
+        cell.summary = event.fullMessage
+        
+        return cell
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -77,10 +103,14 @@ final class ParseResultsViewController: UIViewController {
 extension ParseResultsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 12
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row % 2 > 0 {
+            return buildSummaryCell(tableView: tableView, indexPath: indexPath)
+        }
+        
         let cell: UITableViewCell
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: "ParseResultsCell") {
             cell = dequeuedCell
@@ -88,14 +118,18 @@ extension ParseResultsViewController: UITableViewDataSource {
             cell = UITableViewCell(style: .value2, reuseIdentifier: "ParseResultsCell")
         }
         
-        let event = results.events[indexPath.row]
-        cell.textLabel?.text = event.dateString
+        let event = monthlyEvents[indexPath.section][indexPath.row / 2]
+        cell.textLabel?.text = dayFormatter.string(from: event.date)
         cell.detailTextLabel?.text = event.message
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.events.count
+        return monthlyEvents[section].count * 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return monthFormatter.standaloneMonthSymbols[section]
     }
 }

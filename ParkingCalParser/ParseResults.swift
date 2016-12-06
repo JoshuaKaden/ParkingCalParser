@@ -20,4 +20,19 @@ struct ParseResults {
             .joined(separator: ",")
         return "{\"VCALENDAR\": {\"VEVENT\": [\(eventsString)]}}"
     }
+    
+    func splitByMonth() -> [[ParkingCalendarEvent]] {
+        var months: [[ParkingCalendarEvent]] = []
+        for _ in 0...11 {
+            months.append([])
+        }
+        
+        let calendar = Calendar.current
+        events.forEach() {
+            event in
+            let monthIndex = calendar.component(.month, from: event.date) - 1
+            months[monthIndex].append(event)
+        }
+        return months
+    }
 }

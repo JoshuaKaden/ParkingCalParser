@@ -28,6 +28,8 @@ final class ParkingCalendarEvent: CustomStringConvertible {
         
         return returnString
     }()
+    var summary: String = "Alternate Side Parking Suspended"
+    var uid: String = ""
     
     init(dictionary: [String : String]) {
         for (key, value) in dictionary {
@@ -42,6 +44,12 @@ final class ParkingCalendarEvent: CustomStringConvertible {
                 formatter.dateFormat = "yyyyMMdd"
                 date = formatter.date(from: string)!
                 dateString = string
+            case "SUMMARY;LANGUAGE=en-us":
+                if !value.isEmpty && value != summary {
+                    summary = value
+                }
+            case "UID":
+                uid = value
             default:
                 // no op
                 break
@@ -54,6 +62,6 @@ final class ParkingCalendarEvent: CustomStringConvertible {
     }
     
     func asJSON() -> String {
-        return "{\"DESCRIPTION\": \"\(fullMessage)\", \"DTSTART\": \"\(dateString)\", \"TITLE\": \"\(message)\"}"
+        return "{\n\"DESCRIPTION\": \"\(fullMessage)\",\n \"DTSTART\": \"\(dateString)\",\n \"SUMMARY\": \"\(summary)\",\n \"TITLE\": \"\(message)\",\n \"UID\": \"\(uid)\"\n}"
     }
 }

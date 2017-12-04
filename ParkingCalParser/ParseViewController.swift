@@ -27,8 +27,7 @@ final class ParseViewController: UIViewController {
         
         urlLabel.text = NSLocalizedString("URL of iCal file", comment: "")
         urlContainerView.addSubview(urlLabel)
-        
-        urlTextField.text = "http://www.nyc.gov/html/dot/downloads/misc/2016-alternate-side.ics"
+        urlTextField.text = "http://www.nyc.gov/html/dot/downloads/misc/2018-alternate-side.ics"
         urlContainerView.addSubview(urlTextField)
         
         urlContainerView.backgroundColor = UIColor.lightGray

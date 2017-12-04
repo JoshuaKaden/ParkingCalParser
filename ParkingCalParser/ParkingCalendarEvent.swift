@@ -9,7 +9,7 @@
 import Foundation
 
 final class ParkingCalendarEvent: CustomStringConvertible {
-    static var goodKeys = ["DESCRIPTION", "SUMMARY;LANGUAGE=en-us", "DTSTART;TZID=\"Eastern Standard Time\"", "DTEND;TZID=\"Eastern Standard Time\"", "UID"]
+    static var goodKeys = ["DESCRIPTION", "SUMMARY;LANGUAGE=en-us", "DTSTART;TZID=\"Eastern Standard Time\"", "DTEND;TZID=\"Eastern Standard Time\"", "DTSTART;VALUE=DATE", "DTEND;VALUE=DATE", "UID"]
 
     var date: Date = Date()
     var dateString: String = ""
@@ -36,7 +36,12 @@ final class ParkingCalendarEvent: CustomStringConvertible {
             switch key {
             case "DESCRIPTION":
                 fullMessage = value.replacingOccurrences(of: "\\n", with: "").replacingOccurrences(of: "\\,", with: ",")
-            case "DTSTART;TZID=\"Eastern Standard Time\"":
+                fullMessage = fullMessage.replacingOccurrences(of: "  ", with: " ")
+                fullMessage = fullMessage.replacingOccurrences(of: "\"No Standing Anytime\"", with: "“No Standing Anytime”")
+                fullMessage = fullMessage.replacingOccurrences(of: "effect.Stopping", with: "effect. Stopping")
+                fullMessage = fullMessage.replacingOccurrences(of: "week(for", with: "week (for")
+                fullMessage = fullMessage.replacingOccurrences(of: "stopping,standing", with: "stopping, standing")
+            case "DTSTART;TZID=\"Eastern Standard Time\"", "DTSTART;VALUE=DATE":
                 // ex. "20161225T000000"
                 let index = value.index(value.startIndex, offsetBy: 8)
                 let string = value.substring(to: index)

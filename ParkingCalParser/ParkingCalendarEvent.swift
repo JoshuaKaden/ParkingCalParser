@@ -29,8 +29,9 @@ final class ParkingCalendarEvent: CustomStringConvertible {
         return returnString
     }()
     var summary: String = "Alternate Side Parking Suspended"
-    var uid: String = ""
-    
+    var uidRaw: String = ""
+    var uid: String { return "\(dateString)ASP@dot.nyc.gov" }
+
     init(dictionary: [String : String]) {
         for (key, value) in dictionary {
             switch key {
@@ -54,7 +55,7 @@ final class ParkingCalendarEvent: CustomStringConvertible {
                     summary = value
                 }
             case "UID":
-                uid = value
+                uidRaw = value
             default:
                 // no op
                 break

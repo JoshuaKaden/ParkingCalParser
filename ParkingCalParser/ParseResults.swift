@@ -8,10 +8,17 @@
 
 import Foundation
 
+protocol EventProtocol {
+    var date: Date { get }
+    var message: String { get }
+    var fullMessage: String { get }
+    func asJSON() -> String
+}
+
 struct ParseResults {
     let sourceLines: [String]
     let eventDictionaries: [[String : String]]
-    let events: [ParkingCalendarEvent]
+    let events: [EventProtocol]
     
     func asJSON() -> String {
         let eventsString = events
@@ -21,8 +28,8 @@ struct ParseResults {
         return "{\"VCALENDAR\": {\"VEVENT\": [\(eventsString)]}}"
     }
     
-    func splitByMonth() -> [[ParkingCalendarEvent]] {
-        var months: [[ParkingCalendarEvent]] = []
+    func splitByMonth() -> [[EventProtocol]] {
+        var months: [[EventProtocol]] = []
         for _ in 0...11 {
             months.append([])
         }

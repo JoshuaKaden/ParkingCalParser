@@ -17,7 +17,7 @@ final class ParseResultsViewController: UIViewController {
     }()
     private let chooser = UISegmentedControl(items: ["Table", "JSON"])
     private let containerView = UIView()
-    fileprivate lazy var monthlyEvents: [[ParkingCalendarEvent]] = { return self.results.splitByMonth() }()
+    fileprivate lazy var monthlyEvents: [[EventProtocol]] = { return self.results.splitByMonth() }()
     private let results: ParseResults
     private let tableView = UITableView()
     private let textView = UITextView()
@@ -50,7 +50,7 @@ final class ParseResultsViewController: UIViewController {
         containerView.addSubview(textView)
     }
 
-    func chooserDidChange(_ sender: UISegmentedControl) {
+    @objc func chooserDidChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             tableView.isHidden = false
             textView.isHidden = true

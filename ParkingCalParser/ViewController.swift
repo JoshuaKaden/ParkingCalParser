@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
         view.addSubview(startButton)
     }
 
-    func didTapStartButton(_ sender: UIButton) {
+    @objc func didTapStartButton(_ sender: UIButton) {
         let vc = ParseViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class ParkingCalendarEvent: CustomStringConvertible {
-    static var goodKeys = ["DESCRIPTION", "SUMMARY;LANGUAGE=en-us", "DTSTART;TZID=\"Eastern Standard Time\"", "DTEND;TZID=\"Eastern Standard Time\"", "DTSTART;VALUE=DATE", "DTEND;VALUE=DATE", "UID"]
+final class ParkingCalendarEvent: CustomStringConvertible, EventProtocol {
+    static var goodKeys = ["DESCRIPTION", "SUMMARY;LANGUAGE=en-us", "DTSTART;TZID=\"Eastern Standard Time\"", "DTEND;TZID=\"Eastern Standard Time\"", "DTSTART;VALUE=DATE", "DTEND;VALUE=DATE", "UID", "DTSTART"]
 
     var date: Date = Date()
     var dateString: String = ""
@@ -42,7 +42,7 @@ final class ParkingCalendarEvent: CustomStringConvertible {
                 fullMessage = fullMessage.replacingOccurrences(of: "effect.Stopping", with: "effect. Stopping")
                 fullMessage = fullMessage.replacingOccurrences(of: "week(for", with: "week (for")
                 fullMessage = fullMessage.replacingOccurrences(of: "stopping,standing", with: "stopping, standing")
-            case "DTSTART;TZID=\"Eastern Standard Time\"", "DTSTART;VALUE=DATE":
+            case "DTSTART;TZID=\"Eastern Standard Time\"", "DTSTART;VALUE=DATE", "DTSTART":
                 // ex. "20161225T000000"
                 let index = value.index(value.startIndex, offsetBy: 8)
                 let string = value.substring(to: index)

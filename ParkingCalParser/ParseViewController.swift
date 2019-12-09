@@ -15,7 +15,7 @@ final class ParseViewController: UIViewController {
     private var parseResults: ParseResults?
     private let resultsButton = UIButton()
     private let resultsLabel = UILabel()
-    private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    private let spinner = UIActivityIndicatorView(style: .gray)
     private let urlContainerView = UIView()
     private let urlLabel = UILabel()
     private let urlTextField = UITextField()
@@ -27,7 +27,7 @@ final class ParseViewController: UIViewController {
         
         urlLabel.text = NSLocalizedString("URL of iCal file", comment: "")
         urlContainerView.addSubview(urlLabel)
-        urlTextField.text = "http://www.nyc.gov/html/dot/downloads/misc/2018-alternate-side.ics"
+        urlTextField.text = "https://www1.nyc.gov/html/dot/downloads/misc/2020-alternate-side.ics"
         urlContainerView.addSubview(urlTextField)
         
         urlContainerView.backgroundColor = UIColor.lightGray
@@ -39,7 +39,7 @@ final class ParseViewController: UIViewController {
         view.addSubview(parseButton)
         
         view.addSubview(spinner)
-        view.sendSubview(toBack: spinner)
+        view.sendSubviewToBack(spinner)
         
         resultsLabel.backgroundColor = UIColor.lightGray
         resultsLabel.isHidden = true
@@ -54,7 +54,7 @@ final class ParseViewController: UIViewController {
         view.addSubview(resultsButton)
     }
 
-    func didTapParseButton(_ sender: UIButton) {
+    @objc func didTapParseButton(_ sender: UIButton) {
         if isParsing { return }
         guard let urlString = urlTextField.text, let url = URL(string: urlString) else { return }
         
@@ -88,7 +88,7 @@ final class ParseViewController: UIViewController {
         }
     }
     
-    func didTapResultsButton(_ sender: UIButton) {
+    @objc func didTapResultsButton(_ sender: UIButton) {
         guard let parseResults = parseResults else { return }
         let vc = ParseResultsViewController(results: parseResults)
         navigationController?.pushViewController(vc, animated: true)
